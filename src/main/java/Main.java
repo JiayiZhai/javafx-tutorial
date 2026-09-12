@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private final Image userImage = new Image(
             getClass().getResourceAsStream("/images/DaUser.png"));
+    private final Image dukeImage = new Image(
+            getClass().getResourceAsStream("/images/DaDuke.png"));
+    private final Duke duke = new Duke();
 
     private ScrollPane scrollPane;
     private VBox dialogContainer;
@@ -27,9 +30,6 @@ public class Main extends Application {
 
         userInput = new TextField();
         sendButton = new Button("Send");
-
-        DialogBox dialogBox = new DialogBox("Hello!", userImage);
-        dialogContainer.getChildren().add(dialogBox);
 
         AnchorPane mainLayout = new AnchorPane();
         mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
@@ -57,6 +57,19 @@ public class Main extends Application {
         AnchorPane.setLeftAnchor(userInput, 1.0);
         AnchorPane.setBottomAnchor(userInput, 1.0);
 
+        scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        userInput.setOnAction(event -> handleUserInput());
+        sendButton.setOnMouseClicked(event -> handleUserInput());
+
         stage.show();
+    }
+
+    private void handleUserInput() {
+        String input = userInput.getText();
+        String response = duke.getResponse(input);
+        dialogContainer.getChildren().addAll(
+                DialogBox.getUserDialog(input, userImage),
+                DialogBox.getDukeDialog(response, dukeImage));
+        userInput.clear();
     }
 }
