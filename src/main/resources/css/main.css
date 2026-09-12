@@ -1,0 +1,39 @@
+.root {
+    main-color: rgb(237, 255, 242);
+    -fx-background-color: main-color;
+}
+
+.scroll-pane,
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-border-color: transparent;
+    -fx-padding: 5px;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #86b89a;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-background-color: #48a868;
+    -fx-background-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #399157;
+}
+
+.button:pressed {
+    -fx-background-color: #2c7445;
+}
